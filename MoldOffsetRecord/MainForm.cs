@@ -19,7 +19,9 @@ namespace MoldOffsetRecord
         private FtpDownloader _ftpDownloader;                
         private Timer _timer;        
 
-        MaintnanceForm m_maintnanceForm;        
+        MaintnanceForm m_maintnanceForm;
+
+        private string strUserMode = string.Empty;
 
         public MainForm()
         {
@@ -27,10 +29,13 @@ namespace MoldOffsetRecord
 
             SubFormCreate();
 
+            _F_USER_INIT();
+
             _ftpDownloader = new FtpDownloader();            
 
             // 프로그램 시작 시 파일 다운로드, excel file에 write
-            _ftpDownloader.CheckAndDownloadFile(null, null);
+            if (strUserMode == "OP")
+                _ftpDownloader.CheckAndDownloadFile(null, null);
 
             // 10분 마다 실행 (600000ms)
             _timer = new Timer(600000);
@@ -101,6 +106,23 @@ namespace MoldOffsetRecord
             m_maintnanceForm.Show();            
         }
 
+        private void _F_USER_INIT()
+        {
+            try
+            {
+                // Ini file read
+                StringBuilder sbUserMode = new StringBuilder();
+
+                GetPrivateProfileString("UserInfo", "User", "", sbUserMode, sbUserMode.Capacity, string.Format("{0}{1}", Global.ConfigurePath, "User.ini"));
+
+                strUserMode = sbUserMode.ToString().Trim();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public void SubFormShow(byte PageNum)
         {
             try
@@ -146,7 +168,8 @@ namespace MoldOffsetRecord
         
         private void OnTimerElapsed(object sender, ElapsedEventArgs e)
         {
-            _ftpDownloader.CheckAndDownloadFile(sender, e);            
+            if (strUserMode == "OP")
+                _ftpDownloader.CheckAndDownloadFile(sender, e);            
         }       
     }
 }

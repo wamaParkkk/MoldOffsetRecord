@@ -9,6 +9,7 @@ namespace MoldOffsetRecord
 {
     internal class FtpDownloader
     {
+        public string _ftpIP = "ftp://10.141.12.165/";
         public string _ftpAddress = "ftp://10.141.12.165/Pemtron_Mold_MES/";
         public string _ftpUser = "insp_pemtron";
         public string _ftpPassword = "n63Tpy9f"; 
@@ -179,11 +180,34 @@ namespace MoldOffsetRecord
                 {
                     workbook.Write(file);
                 }
+
+                // 엑셀 파일을 FTP서버의 Data_Collection 폴더로 업로드
+                UploadFileToFtp(excelFilePath, "Data_Collection");
             }
             catch (Exception ex)
             {                
                 MessageBox.Show($"CSV 데이터를 Excel에 기록 중 오류 발생 : {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }            
+        }
+
+        private void UploadFileToFtp(string localFilePath, string ftpFolder)
+        {
+            try
+            {
+                string ftpFilePath = $"{_ftpIP}{ftpFolder}/{Path.GetFileName(localFilePath)}";
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftpFilePath);
+                request.Method = WebRequestMethods.Ftp.UploadFile;
+                request.Credentials = new NetworkCredential(_ftpUser, _ftpPassword);
+                using (FileStream fileStream = new FileStream(localFilePath, FileMode.Open, FileAccess.Read))
+                using (Stream requestStream = request.GetRequestStream())
+                {
+                    fileStream.CopyTo(requestStream);
+                }                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"FTP 서버로 파일 업로드 중 오류 발생 : {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
