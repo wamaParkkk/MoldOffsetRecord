@@ -300,5 +300,42 @@ namespace MoldOffsetRecord
                 MessageBox.Show($"Chart 데이터를 그리는 중 오류 발생 : {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void _excelDownloadButton_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "Excel Files|*.xlsx";
+                saveFileDialog.Title = "저장할 위치를 선택하세요";
+                saveFileDialog.FileName = "Audio Offset";
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {                    
+                    string remoteFileName = Path.GetFileName(saveFileDialog.FileName);                                                                     
+                    string remoteFilePath = $"{_ftpDownloader._ftpIP}{_ftpDownloader._ftpExcelFileFolder}/{remoteFileName}";
+                    DownloadFile(remoteFilePath, saveFileDialog.FileName);                    
+                }
+            }
+        }
+
+        private void DownloadFile(string remoteFileName, string localFilePath)
+        {
+            try
+            {                
+                string ftpFilePath = $"{remoteFileName}";
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftpFilePath);
+                request.Method = WebRequestMethods.Ftp.DownloadFile;
+                request.Credentials = new NetworkCredential(_ftpDownloader._ftpUser, _ftpDownloader._ftpPassword);
+                using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
+                using (Stream responseStream = response.GetResponseStream())
+                using (FileStream fileStream = new FileStream(localFilePath, FileMode.Create))
+                {
+                    responseStream.CopyTo(fileStream);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Excel파일 다운로드 중 오류 발생 : {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

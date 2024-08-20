@@ -29,13 +29,13 @@ namespace MoldOffsetRecord
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this._monthCalendar = new System.Windows.Forms.MonthCalendar();
             this._deviceComboBox = new System.Windows.Forms.ComboBox();
             this._searchButton = new System.Windows.Forms.Button();
@@ -45,6 +45,7 @@ namespace MoldOffsetRecord
             this.panel1 = new System.Windows.Forms.Panel();
             this._dataGridView = new System.Windows.Forms.DataGridView();
             this._pointChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this._excelDownloadButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._pointChart)).BeginInit();
@@ -69,7 +70,7 @@ namespace MoldOffsetRecord
             // _searchButton
             // 
             this._searchButton.BackColor = System.Drawing.Color.PaleGreen;
-            this._searchButton.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this._searchButton.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._searchButton.Location = new System.Drawing.Point(322, 137);
             this._searchButton.Name = "_searchButton";
             this._searchButton.Size = new System.Drawing.Size(130, 60);
@@ -85,7 +86,7 @@ namespace MoldOffsetRecord
             this._listBox.ItemHeight = 16;
             this._listBox.Location = new System.Drawing.Point(10, 209);
             this._listBox.Name = "_listBox";
-            this._listBox.Size = new System.Drawing.Size(442, 788);
+            this._listBox.Size = new System.Drawing.Size(442, 724);
             this._listBox.TabIndex = 3;
             this._listBox.SelectedIndexChanged += new System.EventHandler(this._listBox_SelectedIndexChanged);
             // 
@@ -114,6 +115,7 @@ namespace MoldOffsetRecord
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.MintCream;
+            this.panel1.Controls.Add(this._excelDownloadButton);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this._monthCalendar);
@@ -127,29 +129,29 @@ namespace MoldOffsetRecord
             // 
             // _dataGridView
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this._dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this._dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this._dataGridView.BackgroundColor = System.Drawing.Color.White;
             this._dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this._dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this._dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this._dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this._dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._dataGridView.ColumnHeadersVisible = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this._dataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this._dataGridView.DefaultCellStyle = dataGridViewCellStyle6;
             this._dataGridView.Location = new System.Drawing.Point(473, 3);
             this._dataGridView.Name = "_dataGridView";
             this._dataGridView.ReadOnly = true;
@@ -161,25 +163,37 @@ namespace MoldOffsetRecord
             // _pointChart
             // 
             this._pointChart.BackColor = System.Drawing.Color.Cornsilk;
-            chartArea1.Name = "ChartArea1";
-            this._pointChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this._pointChart.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this._pointChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this._pointChart.Legends.Add(legend2);
             this._pointChart.Location = new System.Drawing.Point(473, 409);
             this._pointChart.Name = "_pointChart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "X";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "Y";
-            this._pointChart.Series.Add(series1);
-            this._pointChart.Series.Add(series2);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Legend = "Legend1";
+            series3.Name = "X";
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Legend = "Legend1";
+            series4.Name = "Y";
+            this._pointChart.Series.Add(series3);
+            this._pointChart.Series.Add(series4);
             this._pointChart.Size = new System.Drawing.Size(1068, 591);
             this._pointChart.TabIndex = 9;
             this._pointChart.Text = "Point Chart";
+            // 
+            // _excelDownloadButton
+            // 
+            this._excelDownloadButton.BackColor = System.Drawing.Color.Aquamarine;
+            this._excelDownloadButton.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._excelDownloadButton.Location = new System.Drawing.Point(322, 937);
+            this._excelDownloadButton.Name = "_excelDownloadButton";
+            this._excelDownloadButton.Size = new System.Drawing.Size(130, 60);
+            this._excelDownloadButton.TabIndex = 7;
+            this._excelDownloadButton.Text = "Excel 파일\r\n다운로드";
+            this._excelDownloadButton.UseVisualStyleBackColor = false;
+            this._excelDownloadButton.Click += new System.EventHandler(this._excelDownloadButton_Click);
             // 
             // PM1Form
             // 
@@ -210,5 +224,6 @@ namespace MoldOffsetRecord
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView _dataGridView;
         private System.Windows.Forms.DataVisualization.Charting.Chart _pointChart;
+        private System.Windows.Forms.Button _excelDownloadButton;
     }
 }

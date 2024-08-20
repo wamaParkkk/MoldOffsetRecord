@@ -12,8 +12,9 @@ namespace MoldOffsetRecord
         public string _ftpIP = "ftp://10.141.12.165/";
         public string _ftpAddress = "ftp://10.141.12.165/Pemtron_Mold_MES/";
         public string _ftpUser = "insp_pemtron";
-        public string _ftpPassword = "n63Tpy9f"; 
-        public string _localDirectory = Global.localLogFilePath;
+        public string _ftpPassword = "n63Tpy9f";
+        public string _ftpExcelFileFolder = "Data_Collection";
+        public string _localDirectory = Global.localLogFilePath;        
 
         public FtpDownloader()
         {            
@@ -182,7 +183,7 @@ namespace MoldOffsetRecord
                 }
 
                 // 엑셀 파일을 FTP서버의 Data_Collection 폴더로 업로드
-                UploadFileToFtp(excelFilePath, "Data_Collection");
+                UploadFileToFtp(excelFilePath, _ftpExcelFileFolder);
             }
             catch (Exception ex)
             {                
