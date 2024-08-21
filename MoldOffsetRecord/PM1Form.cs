@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -95,7 +96,7 @@ namespace MoldOffsetRecord
                     return "TTT";
 
                 case "Monaco":
-                    return "AAA";
+                    return "AVC";
 
                 case "Stanza":
                     return "SSS";
@@ -229,15 +230,19 @@ namespace MoldOffsetRecord
                 row5["Column1"] = "Y";
                 dataTable.Rows.Add(row5);
                 
-                // CSV 파일에서 Distance X, Y값을 가져와서 추가
-                int colIndex = 2;   // Column2부터 시작                
-                string[] strValue = new string[3];
+                // CSV 파일에서 Distance X, Y값을 가져와서 추가                                
                 for (int i = 7; i < lines.Length; i++)
                 {
-                    strValue = lines[i].Split(',');
-                    row4[$"Column{colIndex}"] = strValue[1];  // X값
-                    row5[$"Column{colIndex}"] = strValue[2];  // Y값                    
-                    colIndex++;
+                    string[] strValue = lines[i].Split(',');                                                    
+                    if ((strValue[0] == "A") || (strValue[0] == "B"))
+                    {
+                        //
+                    }
+                    else
+                    {
+                        row4[$"Column{int.Parse(strValue[0]) + 1}"] = strValue[1];  // X값
+                        row5[$"Column{int.Parse(strValue[0]) + 1}"] = strValue[2];  // Y값        
+                    }
                 }
 
                 _dataGridView.DataSource = dataTable;
@@ -268,28 +273,41 @@ namespace MoldOffsetRecord
                 _pointChart.Series["Y"].Points.Clear();
 
                 string[] lines = File.ReadAllLines(filePath);
-                int pointIndex = 1;
-                string[] strValue = new string[3];
+                List<(int xKey, double xValue, double yValue)> dataPoints = new List<(int, double, double)>();
                 for (int i = 7; i < lines.Length; i++)
-                {
-                    strValue = lines[i].Split(',');
-                    double xValue = double.Parse(strValue[1]);
-                    double yValue = double.Parse(strValue[2]);                    
-                    
-                    // Chart에 데이터 추가 (X값)
-                    DataPoint xDataPoint = new DataPoint(pointIndex, xValue)
+                {                    
+                    string[] strValue = lines[i].Split(',');                    
+                    if (strValue[0] != "A" && strValue[0] != "B")
                     {
-                        Label = xValue.ToString()   // X값 라벨 설정
+                        int.TryParse(strValue[0], out int xKey);
+                        double.TryParse(strValue[1], out double xValue);
+                        double.TryParse(strValue[2], out double yValue);
+
+                        dataPoints.Add((xKey, xValue, yValue));
+                    }                                            
+                }
+
+                if (dataPoints.Count == 0)                    
+                    return;
+
+                // xKey 값을 기준으로 정렬
+                var sortedDataPoints = dataPoints.OrderBy(dp => dp.xKey);
+                // 정렬된 데이터 포인트를 Chart에 추가
+                foreach (var dp in sortedDataPoints)
+                {
+                    // Chart에 X값 데이터 포인트 추가
+                    DataPoint xDataPoint = new DataPoint(dp.xKey, dp.xValue)
+                    {
+                        Label = dp.xValue.ToString()    // X값 라벨 설정
                     };
                     _pointChart.Series["X"].Points.Add(xDataPoint);
 
-                    // Chart에 데이터 추가 (Y값)
-                    DataPoint yDataPoint = new DataPoint(pointIndex, yValue)
+                    // Chart에 Y값 데이터 포인트 추가
+                    DataPoint yDataPoint = new DataPoint(dp.xKey, dp.yValue)
                     {
-                        Label = yValue.ToString()   // Y값 라벨 설정
+                        Label = dp.yValue.ToString()    // Y값 라벨 설정
                     };
                     _pointChart.Series["Y"].Points.Add(yDataPoint);
-                    pointIndex++;
                 }
 
                 // Chart를 새로 고침해서 그리기

@@ -168,18 +168,27 @@ namespace MoldOffsetRecord
 
                 IRow distanceXRow = sheet.GetRow(targetStartRow + 4);       // Distance X 기록
                 IRow distanceYRow = sheet.GetRow(targetStartRow + 5);       // Distance Y 기록
-                string[] strValue = new string[3];
+                
                 for (int i = 7; i < csvLines.Length; i++)
                 {
-                    strValue = csvLines[i].Split(',');
-                    distanceXRow.GetCell(i - 6).SetCellValue(strValue[1]);  // Distance X
-                    distanceYRow.GetCell(i - 6).SetCellValue(strValue[2]);  // Distance Y
+                    string[] strValue = csvLines[i].Split(',');
+                    //distanceXRow.GetCell(i - 6).SetCellValue(strValue[1]);  // Distance X
+                    //distanceYRow.GetCell(i - 6).SetCellValue(strValue[2]);  // Distance Y
+                    if ((strValue[0] == "A") || (strValue[0] == "B"))
+                    {
+                        //
+                    }
+                    else
+                    {
+                        distanceXRow.GetCell(int.Parse(strValue[0])).SetCellValue(strValue[1]);  // Distance X
+                        distanceYRow.GetCell(int.Parse(strValue[0])).SetCellValue(strValue[2]);  // Distance Y
+                    }
                 }
 
                 // 엑셀 파일 저장
-                using (FileStream file = new FileStream(excelFilePath, FileMode.Create, FileAccess.Write))
+                using (FileStream fileOut = new FileStream(excelFilePath, FileMode.Create, FileAccess.Write))
                 {
-                    workbook.Write(file);
+                    workbook.Write(fileOut);
                 }
 
                 // 엑셀 파일을 FTP서버의 Data_Collection 폴더로 업로드
