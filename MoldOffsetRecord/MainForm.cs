@@ -20,6 +20,7 @@ namespace MoldOffsetRecord
         private Timer _timer;        
 
         MaintnanceForm m_maintnanceForm;
+        ConfigureForm m_configureForm;
 
         private string strUserMode = string.Empty;
 
@@ -30,6 +31,7 @@ namespace MoldOffsetRecord
             SubFormCreate();
 
             _F_USER_INIT();
+            _PARAMETER_LOAD();
 
             _ftpDownloader = new FtpDownloader();            
 
@@ -37,8 +39,9 @@ namespace MoldOffsetRecord
             if (strUserMode == "OP")
                 _ftpDownloader.CheckAndDownloadFile(null, null);
 
-            // 10분 마다 실행 (600000ms)
-            _timer = new Timer(600000);
+            // 설정 시간 마다 실행 (분 단위)
+            int iTime = Define.iTimeInterval * 60000;
+            _timer = new Timer(iTime);
             _timer.Elapsed += OnTimerElapsed;
             _timer.AutoReset = true; // 타이머 반복 실행
             _timer.Start();
@@ -103,23 +106,44 @@ namespace MoldOffsetRecord
             m_maintnanceForm = new MaintnanceForm();
             m_maintnanceForm.MdiParent = this;
             m_maintnanceForm.Dock = DockStyle.Fill;
-            m_maintnanceForm.Show();            
+            m_maintnanceForm.Show();
+
+            m_configureForm = new ConfigureForm();
+            m_configureForm.MdiParent = this;
+            m_configureForm.Dock = DockStyle.Fill;
+            m_configureForm.Show();
         }
 
         private void _F_USER_INIT()
         {
             try
             {
-                // Ini file read
+                // User Ini file read
                 StringBuilder sbUserMode = new StringBuilder();
-
                 GetPrivateProfileString("UserInfo", "User", "", sbUserMode, sbUserMode.Capacity, string.Format("{0}{1}", Global.ConfigurePath, "User.ini"));
-
                 strUserMode = sbUserMode.ToString().Trim();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"사용자 설정 로드 중 오류 발생 : {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void _PARAMETER_LOAD()
+        {
+            try
+            {
+                // Ini file read
+                StringBuilder sbTimeInterval = new StringBuilder();
+                GetPrivateProfileString("Time", "Interval", "", sbTimeInterval, sbTimeInterval.Capacity, string.Format("{0}{1}", Global.ConfigurePath, "Setting.ini"));
+                if (int.TryParse(sbTimeInterval.ToString().Trim(), out int iTime))
+                    Define.iTimeInterval = iTime;
+
+                m_configureForm.txtBoxTimeInterval.Text = iTime.ToString().Trim();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"설정 파라미터 로드 중 오류 발생 : {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -137,9 +161,10 @@ namespace MoldOffsetRecord
                         }
                         break;
                         
-                    case (byte)Page.RecipePage:
+                    case (byte)Page.ConfigurePage:
                         {
-                            //
+                            m_configureForm.Activate();
+                            m_configureForm.BringToFront();
                         }
                         break;
                 }
@@ -155,6 +180,11 @@ namespace MoldOffsetRecord
             SubFormShow((byte)Page.MaintnancePage);
         }
 
+        private void btnConfig_Click(object sender, EventArgs e)
+        {
+            SubFormShow((byte)Page.ConfigurePage);
+        }
+
         private void timerDisplay_Tick(object sender, EventArgs e)
         {
             Display();
@@ -164,12 +194,15 @@ namespace MoldOffsetRecord
         {
             laDate.Text = DateTime.Today.ToShortDateString();
             laTime.Text = DateTime.Now.ToLocalTime().ToString("HH:mm:ss");
+
+            int iTime = Define.iTimeInterval * 60000;
+            _timer.Interval = iTime;
         }
         
         private void OnTimerElapsed(object sender, ElapsedEventArgs e)
         {
             if (strUserMode == "OP")
                 _ftpDownloader.CheckAndDownloadFile(sender, e);            
-        }       
+        }        
     }
 }

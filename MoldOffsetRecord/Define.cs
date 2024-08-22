@@ -3,7 +3,7 @@
     public enum Page
     {        
         MaintnancePage = 0,
-        RecipePage = 1
+        ConfigurePage = 1
     }
 
     class Define
@@ -12,5 +12,7 @@
                 
         public static byte currentPage = 0;
         public static byte MaintCurrentPage = 0;
+
+        public static int iTimeInterval = 0;
     }    
 }

@@ -76,7 +76,7 @@ namespace MoldOffsetRecord
                 DateTime fileTime;
                 if (DateTime.TryParseExact(timestamp, "yyyyMMddHHmmss", null, System.Globalization.DateTimeStyles.None, out fileTime))
                 {
-                    return fileTime >= DateTime.Now.AddHours(-1); // 1시간 내에 생성된 파일만 다운로드
+                    return fileTime >= DateTime.Now.AddMinutes(-Define.iTimeInterval);
                 }
                 return false;
             }
