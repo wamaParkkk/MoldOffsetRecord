@@ -42,7 +42,7 @@ namespace MoldOffsetRecord
             }
         }
 
-        private string[] GetFileList()
+        public string[] GetFileList()
         {
             try
             {
@@ -63,7 +63,7 @@ namespace MoldOffsetRecord
             }
         }
 
-        private bool ShouldDownloadFile(string fileName)
+        public bool ShouldDownloadFile(string fileName)
         {            
             try
             {
@@ -87,7 +87,7 @@ namespace MoldOffsetRecord
             }
         }
 
-        private void DownloadFile(string remoteFileName, string localFilePath)
+        public void DownloadFile(string remoteFileName, string localFilePath)
         {            
             try
             {
@@ -114,7 +114,7 @@ namespace MoldOffsetRecord
             }
         }
 
-        private void WriteCsvToExcel(string csvFilePath, string excelFilePath)
+        public void WriteCsvToExcel(string csvFilePath, string excelFilePath)
         {
             try
             {
@@ -200,7 +200,7 @@ namespace MoldOffsetRecord
             }            
         }
 
-        private void UploadFileToFtp(string localFilePath, string ftpFolder)
+        public void UploadFileToFtp(string localFilePath, string ftpFolder)
         {
             try
             {

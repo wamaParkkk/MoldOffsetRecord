@@ -13,6 +13,7 @@
         public static byte currentPage = 0;
         public static byte MaintCurrentPage = 0;
 
+        public static string strUserMode = string.Empty;
         public static int iTimeInterval = 0;
     }    
 }

@@ -36,7 +36,11 @@
             this.txtBoxTimeInterval = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnManualExec = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this._monthCalendar_Manual = new System.Windows.Forms.MonthCalendar();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -51,10 +55,10 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.groupBox2.Size = new System.Drawing.Size(349, 278);
+            this.groupBox2.Size = new System.Drawing.Size(388, 168);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "< MES 파일 취합 >";
+            this.groupBox2.Text = "[ 자동 MES 파일 취합 > Excel ]";
             // 
             // btnSave
             // 
@@ -66,7 +70,7 @@
             this.btnSave.ForeColor = System.Drawing.Color.Navy;
             this.btnSave.ImageIndex = 0;
             this.btnSave.ImageList = this.imageList1;
-            this.btnSave.Location = new System.Drawing.Point(212, 215);
+            this.btnSave.Location = new System.Drawing.Point(246, 105);
             this.btnSave.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(126, 51);
@@ -81,6 +85,7 @@
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "Save.png");
+            this.imageList1.Images.SetKeyName(1, "Excel.png");
             // 
             // txtBoxTimeInterval
             // 
@@ -91,7 +96,7 @@
             this.txtBoxTimeInterval.Location = new System.Drawing.Point(130, 48);
             this.txtBoxTimeInterval.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtBoxTimeInterval.Name = "txtBoxTimeInterval";
-            this.txtBoxTimeInterval.Size = new System.Drawing.Size(152, 30);
+            this.txtBoxTimeInterval.Size = new System.Drawing.Size(186, 30);
             this.txtBoxTimeInterval.TabIndex = 30;
             this.txtBoxTimeInterval.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -110,19 +115,55 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Navy;
-            this.label5.Location = new System.Drawing.Point(292, 53);
+            this.label5.Location = new System.Drawing.Point(326, 53);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 25);
             this.label5.TabIndex = 24;
             this.label5.Text = "min";
             // 
+            // btnManualExec
+            // 
+            this.btnManualExec.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnManualExec.ImageIndex = 1;
+            this.btnManualExec.ImageList = this.imageList1;
+            this.btnManualExec.Location = new System.Drawing.Point(246, 152);
+            this.btnManualExec.Name = "btnManualExec";
+            this.btnManualExec.Size = new System.Drawing.Size(126, 51);
+            this.btnManualExec.TabIndex = 14;
+            this.btnManualExec.Text = "   실행";
+            this.btnManualExec.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnManualExec.UseVisualStyleBackColor = true;
+            this.btnManualExec.Click += new System.EventHandler(this.btnManualExec_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this._monthCalendar_Manual);
+            this.groupBox1.Controls.Add(this.btnManualExec);
+            this.groupBox1.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.Navy;
+            this.groupBox1.Location = new System.Drawing.Point(585, 430);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.groupBox1.Size = new System.Drawing.Size(388, 220);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "[ 수동 MES 파일 취합 > Excel ]";
+            // 
+            // _monthCalendar_Manual
+            // 
+            this._monthCalendar_Manual.Location = new System.Drawing.Point(14, 41);
+            this._monthCalendar_Manual.Name = "_monthCalendar_Manual";
+            this._monthCalendar_Manual.TabIndex = 15;
+            // 
             // ConfigureForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Honeydew;
+            this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(1528, 972);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ConfigureForm";
@@ -131,6 +172,7 @@
             this.Load += new System.EventHandler(this.ConfigureForm_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -143,5 +185,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ImageList imageList1;
         public System.Windows.Forms.TextBox txtBoxTimeInterval;
+        private System.Windows.Forms.Button btnManualExec;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.MonthCalendar _monthCalendar_Manual;
     }
 }

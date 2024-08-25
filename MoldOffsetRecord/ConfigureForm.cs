@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
@@ -13,9 +14,13 @@ namespace MoldOffsetRecord
         [DllImport("kernel32")]
         private static extern int GetPrivateProfileString(string section, string key, string def, StringBuilder retVal, int size, string filePath);
 
+        private FtpDownloader _ftpDownloader;
+
         public ConfigureForm()
         {
             InitializeComponent();
+
+            _ftpDownloader = new FtpDownloader();
         }
 
         private void ConfigureForm_Load(object sender, EventArgs e)
@@ -35,6 +40,13 @@ namespace MoldOffsetRecord
         {
             try
             {
+                if (Define.strUserMode != "Master")
+                {
+                    MessageBox.Show($"접근 권한이 없습니다 : {Define.strUserMode}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _PARAMETER_LOAD();                    
+                    return;
+                }
+
                 if (int.TryParse(txtBoxTimeInterval.Text.ToString().Trim(), out int iTime))
                 {
                     WritePrivateProfileString("Time", "Interval", iTime.ToString(), string.Format("{0}{1}", Global.ConfigurePath, "Setting.ini"));
@@ -65,6 +77,23 @@ namespace MoldOffsetRecord
             catch (Exception ex)
             {
                 MessageBox.Show($"설정 파라미터 로드 중 오류 발생 : {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnManualExec_Click(object sender, EventArgs e)
+        {
+            DateTime selectedDate = _monthCalendar_Manual.SelectionStart;
+            string formattedDate = selectedDate.ToString("yyyyMMdd");
+
+            string[] files = _ftpDownloader.GetFileList();
+            foreach (string file in files)
+            {
+                if (file.Contains(formattedDate) && file.EndsWith(".csv"))
+                {
+                    string localFilePath = Path.Combine(Global.localLogFilePath, file);
+                    _ftpDownloader.DownloadFile(file, localFilePath);
+                    _ftpDownloader.WriteCsvToExcel(localFilePath, Path.Combine(Global.localLogFilePath, "Audio Offset.xlsx"));
+                }
             }
         }
     }

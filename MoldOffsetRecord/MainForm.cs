@@ -20,9 +20,7 @@ namespace MoldOffsetRecord
         private Timer _timer;        
 
         MaintnanceForm m_maintnanceForm;
-        ConfigureForm m_configureForm;
-
-        private string strUserMode = string.Empty;
+        ConfigureForm m_configureForm;        
 
         public MainForm()
         {
@@ -36,7 +34,7 @@ namespace MoldOffsetRecord
             _ftpDownloader = new FtpDownloader();            
 
             // 프로그램 시작 시 파일 다운로드, excel file에 write
-            if (strUserMode == "OP")
+            if (Define.strUserMode == "Master")
                 _ftpDownloader.CheckAndDownloadFile(null, null);
 
             // 설정 시간 마다 실행 (분 단위)
@@ -121,7 +119,7 @@ namespace MoldOffsetRecord
                 // User Ini file read
                 StringBuilder sbUserMode = new StringBuilder();
                 GetPrivateProfileString("UserInfo", "User", "", sbUserMode, sbUserMode.Capacity, string.Format("{0}{1}", Global.ConfigurePath, "User.ini"));
-                strUserMode = sbUserMode.ToString().Trim();
+                Define.strUserMode = sbUserMode.ToString().Trim();
             }
             catch (Exception ex)
             {
@@ -201,7 +199,7 @@ namespace MoldOffsetRecord
         
         private void OnTimerElapsed(object sender, ElapsedEventArgs e)
         {
-            if (strUserMode == "OP")
+            if (Define.strUserMode == "Master")
                 _ftpDownloader.CheckAndDownloadFile(sender, e);            
         }        
     }
