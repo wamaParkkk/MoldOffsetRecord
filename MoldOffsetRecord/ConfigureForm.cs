@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
@@ -87,19 +88,35 @@ namespace MoldOffsetRecord
 
         private void btnManualExec_Click(object sender, EventArgs e)
         {
-            DateTime selectedDate = _monthCalendar_Manual.SelectionStart;
-            string formattedDate = selectedDate.ToString("yyyyMMdd");
-
-            string[] files = _ftpDownloader.GetFileList();
-            foreach (string file in files)
+            try
             {
-                if (file.Contains(formattedDate) && file.EndsWith(".csv"))
+                int iCnt = 0;
+                progressBar.Value = iCnt;
+
+                DateTime selectedDate = _monthCalendar_Manual.SelectionStart;
+                string formattedDate = selectedDate.ToString("yyyyMMdd");
+
+                string[] files = _ftpDownloader.GetFileList();
+                progressBar.Maximum = files.Length;
+                foreach (string file in files)
                 {
-                    string localFilePath = Path.Combine(Global.localLogFilePath, file);
-                    _ftpDownloader.DownloadFile(file, localFilePath);
-                    _ftpDownloader.WriteCsvToExcel(localFilePath, Path.Combine(Global.localLogFilePath, "Audio Offset.xlsx"));
+                    if (file.Contains(formattedDate) && file.EndsWith(".csv"))
+                    {
+                        string localFilePath = Path.Combine(Global.localLogFilePath, file);
+                        _ftpDownloader.DownloadFile(file, localFilePath);
+                        _ftpDownloader.WriteCsvToExcel(localFilePath, Path.Combine(Global.localLogFilePath, "Audio Offset.xlsx"));
+                    }
+
+                    iCnt++;
+                    progressBar.Value = iCnt;
                 }
+
+                MessageBox.Show($"[수동] CSV 데이터를 Excel에 기록 완료 : {formattedDate}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"[수동] CSV 데이터를 Excel에 기록 중 오류 발생 : {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }            
         }
     }
 }

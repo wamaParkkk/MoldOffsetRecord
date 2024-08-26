@@ -40,6 +40,7 @@
             this.groupBox_Manual = new System.Windows.Forms.GroupBox();
             this._monthCalendar_Manual = new System.Windows.Forms.MonthCalendar();
             this.label1 = new System.Windows.Forms.Label();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.groupBox_Auto.SuspendLayout();
             this.groupBox_Manual.SuspendLayout();
             this.SuspendLayout();
@@ -140,6 +141,7 @@
             // 
             // groupBox_Manual
             // 
+            this.groupBox_Manual.Controls.Add(this.progressBar);
             this.groupBox_Manual.Controls.Add(this._monthCalendar_Manual);
             this.groupBox_Manual.Controls.Add(this.btnManualExec);
             this.groupBox_Manual.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -169,6 +171,14 @@
             this.label1.Size = new System.Drawing.Size(194, 17);
             this.label1.TabIndex = 42;
             this.label1.Text = "(저장 후 프로그램 재 실행 필요)";
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(246, 123);
+            this.progressBar.Maximum = 0;
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(126, 23);
+            this.progressBar.TabIndex = 16;
             // 
             // ConfigureForm
             // 
@@ -202,5 +212,6 @@
         private System.Windows.Forms.GroupBox groupBox_Manual;
         private System.Windows.Forms.MonthCalendar _monthCalendar_Manual;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }

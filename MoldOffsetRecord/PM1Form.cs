@@ -121,8 +121,8 @@ namespace MoldOffsetRecord
                 request.Credentials = new NetworkCredential(_ftpDownloader._ftpUser, _ftpDownloader._ftpPassword);
                 using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
                 using (StreamReader reader = new StreamReader(response.GetResponseStream()))
-                {
-                    _listBox.Items.Clear();
+                {                    
+                    var fileList = new List<string>();
                     string line;
                     bool fileFound = false;     // 파일이 발견되었는지 여부를 추적
                     while ((line = reader.ReadLine()) != null)
@@ -131,9 +131,17 @@ namespace MoldOffsetRecord
                         //if (line.StartsWith(prefix) && line.Contains(date) && line.EndsWith(".csv"))
                         if (line.Contains(date) && line.EndsWith(".csv"))
                         {
-                            _listBox.Items.Add(line);
+                            fileList.Add(line);
                             fileFound = true;   // 파일을 발견했음을 표시
                         }
+                    }
+
+                    // 파일명을 시간순으로 정렬
+                    var sortedFiles = fileList.OrderBy(f => ExtractTimestamp(f)).ToList();
+                    _listBox.Items.Clear();
+                    foreach (var file in sortedFiles)
+                    {
+                        _listBox.Items.Add(file);
                     }
 
                     // 조건에 맞는 파일이 없으면 메시지 박스 표시
@@ -147,6 +155,21 @@ namespace MoldOffsetRecord
             {
                 MessageBox.Show($"FTP서버 파일 로드 중 오류 발생 : {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private DateTime ExtractTimestamp(string fileName)
+        {
+            string[] parts = fileName.Split('_');
+            if (parts.Length >= 2)
+            {
+                string timestamp = parts[1].Replace(".csv", "");
+                if (DateTime.TryParseExact(timestamp, "yyyyMMddHHmmss", null, System.Globalization.DateTimeStyles.None, out DateTime fileTime))
+                {
+                    return fileTime;
+                }
+            }
+
+            return DateTime.MinValue;   // 실패 시 최소 날짜 반환
         }
 
         private void _filterTextBox_TextChanged(object sender, EventArgs e)
