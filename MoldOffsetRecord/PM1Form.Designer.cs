@@ -43,9 +43,10 @@ namespace MoldOffsetRecord
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this._excelDownloadButton = new System.Windows.Forms.Button();
             this._dataGridView = new System.Windows.Forms.DataGridView();
             this._pointChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this._excelDownloadButton = new System.Windows.Forms.Button();
+            this.textBoxKeywords = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._pointChart)).BeginInit();
@@ -115,6 +116,7 @@ namespace MoldOffsetRecord
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.MintCream;
+            this.panel1.Controls.Add(this.textBoxKeywords);
             this.panel1.Controls.Add(this._excelDownloadButton);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
@@ -126,6 +128,18 @@ namespace MoldOffsetRecord
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(464, 1005);
             this.panel1.TabIndex = 7;
+            // 
+            // _excelDownloadButton
+            // 
+            this._excelDownloadButton.BackColor = System.Drawing.Color.Aquamarine;
+            this._excelDownloadButton.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._excelDownloadButton.Location = new System.Drawing.Point(322, 937);
+            this._excelDownloadButton.Name = "_excelDownloadButton";
+            this._excelDownloadButton.Size = new System.Drawing.Size(130, 60);
+            this._excelDownloadButton.TabIndex = 7;
+            this._excelDownloadButton.Text = "Excel 파일\r\n다운로드";
+            this._excelDownloadButton.UseVisualStyleBackColor = false;
+            this._excelDownloadButton.Click += new System.EventHandler(this._excelDownloadButton_Click);
             // 
             // _dataGridView
             // 
@@ -183,17 +197,15 @@ namespace MoldOffsetRecord
             this._pointChart.TabIndex = 9;
             this._pointChart.Text = "Point Chart";
             // 
-            // _excelDownloadButton
+            // textBoxKeywords
             // 
-            this._excelDownloadButton.BackColor = System.Drawing.Color.Aquamarine;
-            this._excelDownloadButton.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._excelDownloadButton.Location = new System.Drawing.Point(322, 937);
-            this._excelDownloadButton.Name = "_excelDownloadButton";
-            this._excelDownloadButton.Size = new System.Drawing.Size(130, 60);
-            this._excelDownloadButton.TabIndex = 7;
-            this._excelDownloadButton.Text = "Excel 파일\r\n다운로드";
-            this._excelDownloadButton.UseVisualStyleBackColor = false;
-            this._excelDownloadButton.Click += new System.EventHandler(this._excelDownloadButton_Click);
+            this.textBoxKeywords.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.textBoxKeywords.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxKeywords.Location = new System.Drawing.Point(10, 939);
+            this.textBoxKeywords.Name = "textBoxKeywords";
+            this.textBoxKeywords.Size = new System.Drawing.Size(306, 33);
+            this.textBoxKeywords.TabIndex = 8;
+            this.textBoxKeywords.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // PM1Form
             // 
@@ -207,6 +219,7 @@ namespace MoldOffsetRecord
             this.Size = new System.Drawing.Size(1544, 1011);
             this.Load += new System.EventHandler(this.PM1Form_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._pointChart)).EndInit();
             this.ResumeLayout(false);
@@ -225,5 +238,6 @@ namespace MoldOffsetRecord
         private System.Windows.Forms.DataGridView _dataGridView;
         private System.Windows.Forms.DataVisualization.Charting.Chart _pointChart;
         private System.Windows.Forms.Button _excelDownloadButton;
+        private System.Windows.Forms.TextBox textBoxKeywords;
     }
 }

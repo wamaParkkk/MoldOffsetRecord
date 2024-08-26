@@ -30,35 +30,35 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfigureForm));
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox_Auto = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.txtBoxTimeInterval = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnManualExec = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox_Manual = new System.Windows.Forms.GroupBox();
             this._monthCalendar_Manual = new System.Windows.Forms.MonthCalendar();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBox_Auto.SuspendLayout();
+            this.groupBox_Manual.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox2
+            // groupBox_Auto
             // 
-            this.groupBox2.Controls.Add(this.btnSave);
-            this.groupBox2.Controls.Add(this.txtBoxTimeInterval);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.ForeColor = System.Drawing.Color.Navy;
-            this.groupBox2.Location = new System.Drawing.Point(585, 250);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.groupBox2.Size = new System.Drawing.Size(388, 168);
-            this.groupBox2.TabIndex = 13;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "[ 자동 MES 파일 취합 > Excel ]";
+            this.groupBox_Auto.Controls.Add(this.btnSave);
+            this.groupBox_Auto.Controls.Add(this.txtBoxTimeInterval);
+            this.groupBox_Auto.Controls.Add(this.label3);
+            this.groupBox_Auto.Controls.Add(this.label5);
+            this.groupBox_Auto.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_Auto.ForeColor = System.Drawing.Color.Navy;
+            this.groupBox_Auto.Location = new System.Drawing.Point(585, 250);
+            this.groupBox_Auto.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.groupBox_Auto.Name = "groupBox_Auto";
+            this.groupBox_Auto.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.groupBox_Auto.Size = new System.Drawing.Size(388, 168);
+            this.groupBox_Auto.TabIndex = 13;
+            this.groupBox_Auto.TabStop = false;
+            this.groupBox_Auto.Text = "[ 자동 MES 파일 취합 > Excel ]";
             // 
             // btnSave
             // 
@@ -136,20 +136,20 @@
             this.btnManualExec.UseVisualStyleBackColor = true;
             this.btnManualExec.Click += new System.EventHandler(this.btnManualExec_Click);
             // 
-            // groupBox1
+            // groupBox_Manual
             // 
-            this.groupBox1.Controls.Add(this._monthCalendar_Manual);
-            this.groupBox1.Controls.Add(this.btnManualExec);
-            this.groupBox1.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.ForeColor = System.Drawing.Color.Navy;
-            this.groupBox1.Location = new System.Drawing.Point(585, 430);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.groupBox1.Size = new System.Drawing.Size(388, 220);
-            this.groupBox1.TabIndex = 15;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "[ 수동 MES 파일 취합 > Excel ]";
+            this.groupBox_Manual.Controls.Add(this._monthCalendar_Manual);
+            this.groupBox_Manual.Controls.Add(this.btnManualExec);
+            this.groupBox_Manual.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_Manual.ForeColor = System.Drawing.Color.Navy;
+            this.groupBox_Manual.Location = new System.Drawing.Point(585, 430);
+            this.groupBox_Manual.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.groupBox_Manual.Name = "groupBox_Manual";
+            this.groupBox_Manual.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.groupBox_Manual.Size = new System.Drawing.Size(388, 220);
+            this.groupBox_Manual.TabIndex = 15;
+            this.groupBox_Manual.TabStop = false;
+            this.groupBox_Manual.Text = "[ 수동 MES 파일 취합 > Excel ]";
             // 
             // _monthCalendar_Manual
             // 
@@ -163,30 +163,30 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(1528, 972);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox_Manual);
+            this.Controls.Add(this.groupBox_Auto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ConfigureForm";
             this.Text = "ConfigureForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConfigureForm_FormClosing);
             this.Load += new System.EventHandler(this.ConfigureForm_Load);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
+            this.groupBox_Auto.ResumeLayout(false);
+            this.groupBox_Auto.PerformLayout();
+            this.groupBox_Manual.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox_Auto;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ImageList imageList1;
         public System.Windows.Forms.TextBox txtBoxTimeInterval;
         private System.Windows.Forms.Button btnManualExec;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox_Manual;
         private System.Windows.Forms.MonthCalendar _monthCalendar_Manual;
     }
 }

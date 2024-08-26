@@ -32,11 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.timerDisplay = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnMain = new System.Windows.Forms.Button();
+            this.btnConfig = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.btnMain = new System.Windows.Forms.Button();
             this.laTime = new System.Windows.Forms.Label();
             this.laDate = new System.Windows.Forms.Label();
-            this.btnConfig = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,6 +57,28 @@
             this.panel1.Size = new System.Drawing.Size(120, 1011);
             this.panel1.TabIndex = 3;
             // 
+            // btnConfig
+            // 
+            this.btnConfig.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfig.ForeColor = System.Drawing.Color.Navy;
+            this.btnConfig.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnConfig.ImageIndex = 1;
+            this.btnConfig.ImageList = this.imageList1;
+            this.btnConfig.Location = new System.Drawing.Point(8, 131);
+            this.btnConfig.Name = "btnConfig";
+            this.btnConfig.Size = new System.Drawing.Size(103, 50);
+            this.btnConfig.TabIndex = 152;
+            this.btnConfig.Text = "   설정";
+            this.btnConfig.UseVisualStyleBackColor = true;
+            this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "MainButton.png");
+            this.imageList1.Images.SetKeyName(1, "Settings.png");
+            // 
             // btnMain
             // 
             this.btnMain.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -71,13 +93,6 @@
             this.btnMain.Text = "    Main";
             this.btnMain.UseVisualStyleBackColor = true;
             this.btnMain.Click += new System.EventHandler(this.btnMain_Click);
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "MainButton.png");
-            this.imageList1.Images.SetKeyName(1, "Settings.png");
             // 
             // laTime
             // 
@@ -102,21 +117,6 @@
             this.laDate.Size = new System.Drawing.Size(79, 14);
             this.laDate.TabIndex = 149;
             this.laDate.Text = "0000.00.00";
-            // 
-            // btnConfig
-            // 
-            this.btnConfig.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfig.ForeColor = System.Drawing.Color.Navy;
-            this.btnConfig.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConfig.ImageIndex = 1;
-            this.btnConfig.ImageList = this.imageList1;
-            this.btnConfig.Location = new System.Drawing.Point(8, 131);
-            this.btnConfig.Name = "btnConfig";
-            this.btnConfig.Size = new System.Drawing.Size(103, 50);
-            this.btnConfig.TabIndex = 152;
-            this.btnConfig.Text = "   설정";
-            this.btnConfig.UseVisualStyleBackColor = true;
-            this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
             // 
             // MainForm
             // 

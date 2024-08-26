@@ -80,9 +80,10 @@ namespace MoldOffsetRecord
 
             DateTime selectedDate = _monthCalendar.SelectionStart;
             string formattedDate = selectedDate.ToString("yyyyMMdd");
-            string devicePrefix = GetDevicePrefix(_deviceComboBox.SelectedItem.ToString());
+            //string devicePrefix = GetDevicePrefix(_deviceComboBox.SelectedItem.ToString());
             // 날짜와 Device 조건으로 파일 로드
-            LoadCsvFilesFromFtp(devicePrefix, formattedDate);
+            //LoadCsvFilesFromFtp(devicePrefix, formattedDate);
+            LoadCsvFilesFromFtp(formattedDate);
         }
 
         private string GetDevicePrefix(string device)
@@ -105,8 +106,9 @@ namespace MoldOffsetRecord
                     return string.Empty;
             }
         }
-        
-        private void LoadCsvFilesFromFtp(string prefix, string date)
+
+        //private void LoadCsvFilesFromFtp(string prefix, string date)
+        private void LoadCsvFilesFromFtp(string date)
         {
             try
             {
@@ -123,7 +125,8 @@ namespace MoldOffsetRecord
                     while ((line = reader.ReadLine()) != null)
                     {
                         // 파일명이 devicePrefix로 시작하고, 날짜를 포함하는 경우에만 추가
-                        if (line.StartsWith(prefix) && line.Contains(date) && line.EndsWith(".csv"))
+                        //if (line.StartsWith(prefix) && line.Contains(date) && line.EndsWith(".csv"))
+                        if (line.Contains(date) && line.EndsWith(".csv"))
                         {
                             _listBox.Items.Add(line);
                             fileFound = true;   // 파일을 발견했음을 표시

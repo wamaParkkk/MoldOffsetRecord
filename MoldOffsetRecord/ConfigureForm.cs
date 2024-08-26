@@ -28,7 +28,12 @@ namespace MoldOffsetRecord
             Width = 1544;
             Height = 1011;
             Top = 0;
-            Left = 0;            
+            Left = 0;
+
+            if (Define.strUserMode == "Master")
+                groupBox_Manual.Visible = true;
+            else
+                groupBox_Manual.Visible = false;
         }
 
         private void ConfigureForm_FormClosing(object sender, FormClosingEventArgs e)
