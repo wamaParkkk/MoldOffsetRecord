@@ -191,10 +191,7 @@ namespace MoldOffsetRecord
         private void Display()
         {
             laDate.Text = DateTime.Today.ToShortDateString();
-            laTime.Text = DateTime.Now.ToLocalTime().ToString("HH:mm:ss");
-
-            int iTime = Define.iTimeInterval * 60000;
-            _timer.Interval = iTime;
+            laTime.Text = DateTime.Now.ToLocalTime().ToString("HH:mm:ss");            
         }
         
         private void OnTimerElapsed(object sender, ElapsedEventArgs e)

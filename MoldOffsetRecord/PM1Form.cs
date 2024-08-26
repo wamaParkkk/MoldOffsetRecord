@@ -84,6 +84,9 @@ namespace MoldOffsetRecord
             // 날짜와 Device 조건으로 파일 로드
             //LoadCsvFilesFromFtp(devicePrefix, formattedDate);
             LoadCsvFilesFromFtp(formattedDate);
+
+            _filterTextBox.Text = string.Empty;
+            _filterTextBox.Focus();
         }
 
         private string GetDevicePrefix(string device)
@@ -143,6 +146,20 @@ namespace MoldOffsetRecord
             catch (Exception ex)
             {
                 MessageBox.Show($"FTP서버 파일 로드 중 오류 발생 : {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void _filterTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string filterText = _filterTextBox.Text.ToUpper();
+            for (int i = 0; i < _listBox.Items.Count; i++)
+            {
+                string itemText = _listBox.Items[i].ToString().ToUpper();
+                if (!itemText.Contains(filterText))
+                {
+                    _listBox.Items.RemoveAt(i);
+                    i--; // RemoveAt으로 아이템이 제거되면 인덱스 조정 필요
+                }
             }
         }
 
@@ -357,6 +374,6 @@ namespace MoldOffsetRecord
             {
                 MessageBox.Show($"Excel파일 다운로드 중 오류 발생 : {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+        }        
     }
 }

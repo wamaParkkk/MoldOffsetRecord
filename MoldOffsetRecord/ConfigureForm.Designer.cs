@@ -39,12 +39,14 @@
             this.btnManualExec = new System.Windows.Forms.Button();
             this.groupBox_Manual = new System.Windows.Forms.GroupBox();
             this._monthCalendar_Manual = new System.Windows.Forms.MonthCalendar();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox_Auto.SuspendLayout();
             this.groupBox_Manual.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox_Auto
             // 
+            this.groupBox_Auto.Controls.Add(this.label1);
             this.groupBox_Auto.Controls.Add(this.btnSave);
             this.groupBox_Auto.Controls.Add(this.txtBoxTimeInterval);
             this.groupBox_Auto.Controls.Add(this.label3);
@@ -157,6 +159,17 @@
             this._monthCalendar_Manual.Name = "_monthCalendar_Manual";
             this._monthCalendar_Manual.TabIndex = 15;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(29, 139);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(194, 17);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "(저장 후 프로그램 재 실행 필요)";
+            // 
             // ConfigureForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -188,5 +201,6 @@
         private System.Windows.Forms.Button btnManualExec;
         private System.Windows.Forms.GroupBox groupBox_Manual;
         private System.Windows.Forms.MonthCalendar _monthCalendar_Manual;
+        private System.Windows.Forms.Label label1;
     }
 }
