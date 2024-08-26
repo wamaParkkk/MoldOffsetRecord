@@ -78,6 +78,12 @@ namespace MoldOffsetRecord
                 return;
             }
 
+            if ((_deviceComboBox.SelectedItem == "Kaanapali") || (_deviceComboBox.SelectedItem == "Stanza"))
+            {
+                MessageBox.Show("현재 지원하지 않는 Device입니다", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             DateTime selectedDate = _monthCalendar.SelectionStart;
             string formattedDate = selectedDate.ToString("yyyyMMdd");
             //string devicePrefix = GetDevicePrefix(_deviceComboBox.SelectedItem.ToString());
