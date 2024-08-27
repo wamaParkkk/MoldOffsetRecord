@@ -58,7 +58,7 @@ namespace MoldOffsetRecord
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"FTP 파일 목록을 가져오는 중 오류 발생 : {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show($"FTP 파일 목록을 가져오는 중 오류 발생 : {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return new string[] { };
             }
         }

@@ -78,7 +78,7 @@ namespace MoldOffsetRecord
                 return;
             }
 
-            if ((_deviceComboBox.SelectedItem == "Kaanapali") || (_deviceComboBox.SelectedItem == "Stanza"))
+            if ((_deviceComboBox.SelectedItem.ToString() == "Kaanapali") || (_deviceComboBox.SelectedItem.ToString() == "Stanza"))
             {
                 MessageBox.Show("현재 지원하지 않는 Device입니다", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -150,9 +150,13 @@ namespace MoldOffsetRecord
                         _listBox.Items.Add(file);
                     }
 
+                    labelStripCount.Text = $"Strip : {_listBox.Items.Count.ToString()}개";
+
                     // 조건에 맞는 파일이 없으면 메시지 박스 표시
                     if (!fileFound)
                     {
+                        labelStripCount.Text = "Strip : 0개";
+
                         MessageBox.Show("조건에 맞는 파일이 없습니다", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -176,6 +180,15 @@ namespace MoldOffsetRecord
             }
 
             return DateTime.MinValue;   // 실패 시 최소 날짜 반환
+        }
+
+        private void _clearButton_Click(object sender, EventArgs e)
+        {
+            if (_listBox.Items == null)
+                return;
+
+            _listBox.Items.Clear();
+            labelStripCount.Text = "Strip : 0개";
         }
 
         private void _filterTextBox_TextChanged(object sender, EventArgs e)

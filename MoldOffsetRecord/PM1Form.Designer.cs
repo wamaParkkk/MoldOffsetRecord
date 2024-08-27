@@ -43,11 +43,13 @@ namespace MoldOffsetRecord
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this._filterTextBox = new System.Windows.Forms.TextBox();
             this._excelDownloadButton = new System.Windows.Forms.Button();
             this._dataGridView = new System.Windows.Forms.DataGridView();
             this._pointChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this._filterTextBox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelStripCount = new System.Windows.Forms.Label();
+            this._clearButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._pointChart)).BeginInit();
@@ -73,9 +75,9 @@ namespace MoldOffsetRecord
             // 
             this._searchButton.BackColor = System.Drawing.Color.PaleGreen;
             this._searchButton.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._searchButton.Location = new System.Drawing.Point(322, 137);
+            this._searchButton.Location = new System.Drawing.Point(242, 137);
             this._searchButton.Name = "_searchButton";
-            this._searchButton.Size = new System.Drawing.Size(130, 60);
+            this._searchButton.Size = new System.Drawing.Size(100, 60);
             this._searchButton.TabIndex = 2;
             this._searchButton.Text = "검색";
             this._searchButton.UseVisualStyleBackColor = false;
@@ -86,9 +88,9 @@ namespace MoldOffsetRecord
             this._listBox.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this._listBox.FormattingEnabled = true;
             this._listBox.ItemHeight = 16;
-            this._listBox.Location = new System.Drawing.Point(10, 209);
+            this._listBox.Location = new System.Drawing.Point(10, 225);
             this._listBox.Name = "_listBox";
-            this._listBox.Size = new System.Drawing.Size(442, 724);
+            this._listBox.Size = new System.Drawing.Size(442, 708);
             this._listBox.TabIndex = 3;
             this._listBox.SelectedIndexChanged += new System.EventHandler(this._listBox_SelectedIndexChanged);
             // 
@@ -117,6 +119,8 @@ namespace MoldOffsetRecord
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.MintCream;
+            this.panel1.Controls.Add(this._clearButton);
+            this.panel1.Controls.Add(this.labelStripCount);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this._filterTextBox);
             this.panel1.Controls.Add(this._excelDownloadButton);
@@ -130,6 +134,27 @@ namespace MoldOffsetRecord
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(464, 1005);
             this.panel1.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(7, 980);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(233, 17);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "(필터링 후 다른 파일을 보려면 재검색)";
+            // 
+            // _filterTextBox
+            // 
+            this._filterTextBox.BackColor = System.Drawing.SystemColors.HighlightText;
+            this._filterTextBox.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._filterTextBox.Location = new System.Drawing.Point(10, 939);
+            this._filterTextBox.Name = "_filterTextBox";
+            this._filterTextBox.Size = new System.Drawing.Size(306, 33);
+            this._filterTextBox.TabIndex = 8;
+            this._filterTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._filterTextBox.TextChanged += new System.EventHandler(this._filterTextBox_TextChanged);
             // 
             // _excelDownloadButton
             // 
@@ -199,26 +224,28 @@ namespace MoldOffsetRecord
             this._pointChart.TabIndex = 9;
             this._pointChart.Text = "Point Chart";
             // 
-            // _filterTextBox
+            // labelStripCount
             // 
-            this._filterTextBox.BackColor = System.Drawing.SystemColors.HighlightText;
-            this._filterTextBox.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._filterTextBox.Location = new System.Drawing.Point(10, 939);
-            this._filterTextBox.Name = "_filterTextBox";
-            this._filterTextBox.Size = new System.Drawing.Size(306, 33);
-            this._filterTextBox.TabIndex = 8;
-            this._filterTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this._filterTextBox.TextChanged += new System.EventHandler(this._filterTextBox_TextChanged);
+            this.labelStripCount.AutoSize = true;
+            this.labelStripCount.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStripCount.ForeColor = System.Drawing.Color.Blue;
+            this.labelStripCount.Location = new System.Drawing.Point(10, 205);
+            this.labelStripCount.Name = "labelStripCount";
+            this.labelStripCount.Size = new System.Drawing.Size(69, 17);
+            this.labelStripCount.TabIndex = 10;
+            this.labelStripCount.Text = "Strip : 0개";
             // 
-            // label3
+            // _clearButton
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(7, 980);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(233, 17);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "(필터링 후 다른 파일을 보려면 재검색)";
+            this._clearButton.BackColor = System.Drawing.Color.MistyRose;
+            this._clearButton.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._clearButton.Location = new System.Drawing.Point(352, 137);
+            this._clearButton.Name = "_clearButton";
+            this._clearButton.Size = new System.Drawing.Size(100, 60);
+            this._clearButton.TabIndex = 11;
+            this._clearButton.Text = "리스트\r\nClear";
+            this._clearButton.UseVisualStyleBackColor = false;
+            this._clearButton.Click += new System.EventHandler(this._clearButton_Click);
             // 
             // PM1Form
             // 
@@ -253,5 +280,7 @@ namespace MoldOffsetRecord
         private System.Windows.Forms.Button _excelDownloadButton;
         private System.Windows.Forms.TextBox _filterTextBox;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelStripCount;
+        private System.Windows.Forms.Button _clearButton;
     }
 }
