@@ -29,13 +29,15 @@ namespace MoldOffsetRecord
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series45 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series46 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series47 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series48 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this._monthCalendar = new System.Windows.Forms.MonthCalendar();
             this._deviceComboBox = new System.Windows.Forms.ComboBox();
             this._searchButton = new System.Windows.Forms.Button();
@@ -43,13 +45,21 @@ namespace MoldOffsetRecord
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this._clearButton = new System.Windows.Forms.Button();
+            this.labelStripCount = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this._filterTextBox = new System.Windows.Forms.TextBox();
             this._excelDownloadButton = new System.Windows.Forms.Button();
             this._dataGridView = new System.Windows.Forms.DataGridView();
             this._pointChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.labelStripCount = new System.Windows.Forms.Label();
-            this._clearButton = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._pointChart)).BeginInit();
@@ -135,6 +145,29 @@ namespace MoldOffsetRecord
             this.panel1.Size = new System.Drawing.Size(464, 1005);
             this.panel1.TabIndex = 7;
             // 
+            // _clearButton
+            // 
+            this._clearButton.BackColor = System.Drawing.Color.MistyRose;
+            this._clearButton.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._clearButton.Location = new System.Drawing.Point(352, 137);
+            this._clearButton.Name = "_clearButton";
+            this._clearButton.Size = new System.Drawing.Size(100, 60);
+            this._clearButton.TabIndex = 11;
+            this._clearButton.Text = "리스트\r\nClear";
+            this._clearButton.UseVisualStyleBackColor = false;
+            this._clearButton.Click += new System.EventHandler(this._clearButton_Click);
+            // 
+            // labelStripCount
+            // 
+            this.labelStripCount.AutoSize = true;
+            this.labelStripCount.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStripCount.ForeColor = System.Drawing.Color.Blue;
+            this.labelStripCount.Location = new System.Drawing.Point(10, 205);
+            this.labelStripCount.Name = "labelStripCount";
+            this.labelStripCount.Size = new System.Drawing.Size(69, 17);
+            this.labelStripCount.TabIndex = 10;
+            this.labelStripCount.Text = "Strip : 0개";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -170,29 +203,29 @@ namespace MoldOffsetRecord
             // 
             // _dataGridView
             // 
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            this._dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle34.BackColor = System.Drawing.Color.White;
+            this._dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle34;
             this._dataGridView.BackgroundColor = System.Drawing.Color.White;
             this._dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this._dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this._dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this._dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle35;
             this._dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._dataGridView.ColumnHeadersVisible = false;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this._dataGridView.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle36.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this._dataGridView.DefaultCellStyle = dataGridViewCellStyle36;
             this._dataGridView.Location = new System.Drawing.Point(473, 3);
             this._dataGridView.Name = "_dataGridView";
             this._dataGridView.ReadOnly = true;
@@ -204,54 +237,145 @@ namespace MoldOffsetRecord
             // _pointChart
             // 
             this._pointChart.BackColor = System.Drawing.Color.Cornsilk;
-            chartArea4.Name = "ChartArea1";
-            this._pointChart.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this._pointChart.Legends.Add(legend4);
+            chartArea12.Name = "ChartArea1";
+            this._pointChart.ChartAreas.Add(chartArea12);
+            legend12.Name = "Legend1";
+            this._pointChart.Legends.Add(legend12);
             this._pointChart.Location = new System.Drawing.Point(473, 409);
             this._pointChart.Name = "_pointChart";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series7.Legend = "Legend1";
-            series7.Name = "X";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series8.Legend = "Legend1";
-            series8.Name = "Y";
-            this._pointChart.Series.Add(series7);
-            this._pointChart.Series.Add(series8);
+            series45.ChartArea = "ChartArea1";
+            series45.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series45.Legend = "Legend1";
+            series45.Name = "X";
+            series46.ChartArea = "ChartArea1";
+            series46.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series46.Legend = "Legend1";
+            series46.Name = "Y";
+            series47.ChartArea = "ChartArea1";
+            series47.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series47.Legend = "Legend1";
+            series47.Name = "Marlin";
+            series48.ChartArea = "ChartArea1";
+            series48.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series48.Legend = "Legend1";
+            series48.Name = "Monaco";
+            this._pointChart.Series.Add(series45);
+            this._pointChart.Series.Add(series46);
+            this._pointChart.Series.Add(series47);
+            this._pointChart.Series.Add(series48);
             this._pointChart.Size = new System.Drawing.Size(1068, 591);
             this._pointChart.TabIndex = 9;
             this._pointChart.Text = "Point Chart";
             // 
-            // labelStripCount
+            // label4
             // 
-            this.labelStripCount.AutoSize = true;
-            this.labelStripCount.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStripCount.ForeColor = System.Drawing.Color.Blue;
-            this.labelStripCount.Location = new System.Drawing.Point(10, 205);
-            this.labelStripCount.Name = "labelStripCount";
-            this.labelStripCount.Size = new System.Drawing.Size(69, 17);
-            this.labelStripCount.TabIndex = 10;
-            this.labelStripCount.Text = "Strip : 0개";
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Cornsilk;
+            this.label4.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label4.Location = new System.Drawing.Point(1384, 514);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(88, 15);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "[Marlin] X-USL";
             // 
-            // _clearButton
+            // label5
             // 
-            this._clearButton.BackColor = System.Drawing.Color.MistyRose;
-            this._clearButton.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._clearButton.Location = new System.Drawing.Point(352, 137);
-            this._clearButton.Name = "_clearButton";
-            this._clearButton.Size = new System.Drawing.Size(100, 60);
-            this._clearButton.TabIndex = 11;
-            this._clearButton.Text = "리스트\r\nClear";
-            this._clearButton.UseVisualStyleBackColor = false;
-            this._clearButton.Click += new System.EventHandler(this._clearButton_Click);
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Cornsilk;
+            this.label5.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label5.Location = new System.Drawing.Point(1384, 856);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(85, 15);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "[Marlin] X-LSL";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Cornsilk;
+            this.label6.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label6.Location = new System.Drawing.Point(1384, 598);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(87, 15);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "[Marlin] Y-USL";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Cornsilk;
+            this.label7.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label7.Location = new System.Drawing.Point(1384, 774);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(84, 15);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "[Marlin] Y-LSL";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Cornsilk;
+            this.label8.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Fuchsia;
+            this.label8.Location = new System.Drawing.Point(1384, 578);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(132, 15);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "[Monaco] X-USL(MCO)";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Cornsilk;
+            this.label9.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Fuchsia;
+            this.label9.Location = new System.Drawing.Point(1384, 610);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(154, 15);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "[Monaco] X-USL(Pemtron)";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Cornsilk;
+            this.label10.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Fuchsia;
+            this.label10.Location = new System.Drawing.Point(1384, 792);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(129, 15);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "[Monaco] X-LSL(MCO)";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Cornsilk;
+            this.label11.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Fuchsia;
+            this.label11.Location = new System.Drawing.Point(1384, 761);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(151, 15);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "[Monaco] X-LSL(Pemtron)";
             // 
             // PM1Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this._pointChart);
             this.Controls.Add(this._dataGridView);
             this.Controls.Add(this.panel1);
@@ -263,6 +387,7 @@ namespace MoldOffsetRecord
             ((System.ComponentModel.ISupportInitialize)(this._dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._pointChart)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -282,5 +407,13 @@ namespace MoldOffsetRecord
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelStripCount;
         private System.Windows.Forms.Button _clearButton;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
     }
 }

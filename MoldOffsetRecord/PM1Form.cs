@@ -48,20 +48,28 @@ namespace MoldOffsetRecord
         }
 
         private void _pointChart_Init()
-        {
+        {            
             _pointChart.ChartAreas[0].AxisX.Interval = 1;
             _pointChart.ChartAreas[0].AxisX.Minimum = 0;
             _pointChart.ChartAreas[0].AxisX.Maximum = 15;
 
-            _pointChart.ChartAreas[0].AxisY.Interval = 0.01;
-            _pointChart.ChartAreas[0].AxisY.Minimum = -0.15;
-            _pointChart.ChartAreas[0].AxisY.Maximum = 0.15;
+            _pointChart.ChartAreas[0].AxisY.Interval = 0.02;
+            _pointChart.ChartAreas[0].AxisY.Minimum = -0.3;
+            _pointChart.ChartAreas[0].AxisY.Maximum = 0.3;
 
-            _pointChart.Series["X"].BorderWidth = 2;
+            _pointChart.Series["X"].BorderWidth = 3;
             _pointChart.Series["X"].Color = Color.Red;
 
-            _pointChart.Series["Y"].BorderWidth = 2;
+            _pointChart.Series["Y"].BorderWidth = 3;
             _pointChart.Series["Y"].Color = Color.Blue;
+
+
+            // 기준선 Legend
+            _pointChart.Series["Marlin"].BorderWidth = 3;
+            _pointChart.Series["Marlin"].Color = Color.DarkOrange;
+
+            _pointChart.Series["Monaco"].BorderWidth = 3;
+            _pointChart.Series["Monaco"].Color = Color.Fuchsia;
         }
 
         public void Display()
@@ -332,7 +340,7 @@ namespace MoldOffsetRecord
             {
                 // Chart clear
                 _pointChart.Series["X"].Points.Clear();
-                _pointChart.Series["Y"].Points.Clear();
+                _pointChart.Series["Y"].Points.Clear();                
 
                 string[] lines = File.ReadAllLines(filePath);
                 List<(int xKey, double xValue, double yValue)> dataPoints = new List<(int, double, double)>();
@@ -372,12 +380,66 @@ namespace MoldOffsetRecord
                     _pointChart.Series["Y"].Points.Add(yDataPoint);
                 }
 
+                // 기준선 그리기
+                AddMultipleReferenceLinesToChart_Marlin();
+                AddMultipleReferenceLinesToChart_Monaco();
+
                 // Chart를 새로 고침해서 그리기
                 _pointChart.Invalidate();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Chart 데이터를 그리는 중 오류 발생 : {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void AddMultipleReferenceLinesToChart_Marlin()
+        {
+            // 차트 영역의 위치 및 크기를 가져옵니다.
+            var chartArea = _pointChart.ChartAreas[0];
+            var chartPosition = _pointChart.ClientRectangle;
+            // y값과 라벨 텍스트 정의
+            double[] yValues = { 0.2, -0.2, 0.1, -0.1 };
+            string[] labels = { "0.2", "-0.2", "0.1", "-0.1" };
+            for (int i = 0; i < yValues.Length; i++)
+            {
+                // StripLine 객체 생성
+                StripLine stripLine = new StripLine
+                {
+                    IntervalOffset = yValues[i],                // y값에 선 추가                                        
+                    BorderColor = Color.DarkOrange,             // 선 색상
+                    BorderWidth = 2,                            // 선 두께
+                    BorderDashStyle = ChartDashStyle.Solid,     // 선 스타일
+                    Text = labels[i],                           // 라벨 텍스트 설정
+                    TextLineAlignment = StringAlignment.Center  // 라벨 정렬 설정
+                };
+                // 차트 영역에 StripLine 추가
+                chartArea.AxisY.StripLines.Add(stripLine);                
+            }            
+        }
+
+        private void AddMultipleReferenceLinesToChart_Monaco()
+        {
+            // 차트 영역의 위치 및 크기를 가져옵니다.
+            var chartArea = _pointChart.ChartAreas[0];
+            var chartPosition = _pointChart.ClientRectangle;
+            // y값과 라벨 텍스트 정의
+            double[] yValues = { 0.125, 0.09, -0.125, -0.09 };
+            string[] labels = { "0.125", "0.09", "-0.125", "-0.09" };
+            for (int i = 0; i < yValues.Length; i++)
+            {
+                // StripLine 객체 생성
+                StripLine stripLine = new StripLine
+                {
+                    IntervalOffset = yValues[i],                // y값에 선 추가                                        
+                    BorderColor = Color.Fuchsia,                // 선 색상
+                    BorderWidth = 2,                            // 선 두께
+                    BorderDashStyle = ChartDashStyle.Solid,     // 선 스타일
+                    Text = labels[i],                           // 라벨 텍스트 설정
+                    TextLineAlignment = StringAlignment.Center  // 라벨 정렬 설정
+                };
+                // 차트 영역에 StripLine 추가
+                chartArea.AxisY.StripLines.Add(stripLine);                
             }
         }
 

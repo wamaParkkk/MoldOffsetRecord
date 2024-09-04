@@ -2,6 +2,7 @@
 using NPOI.XSSF.UserModel;
 using System;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Windows.Forms;
 
@@ -119,7 +120,6 @@ namespace MoldOffsetRecord
             try
             {
                 var csvLines = File.ReadAllLines(csvFilePath);
-                
                 // 엑셀 파일 열기
                 IWorkbook workbook;
                 using (FileStream file = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read))
@@ -156,24 +156,22 @@ namespace MoldOffsetRecord
 
                 // 추가된 위치에 데이터 기록
                 IRow dataRow = sheet.GetRow(targetStartRow + 2);    // 실제 데이터는 3번째 행부터 기록
-                
+
                 dataRow.GetCell(0).SetCellValue(csvLines[5].Split(',')[1]); // LOT# -> A
-                
+
                 dataRow.GetCell(1).SetCellValue(csvLines[2].Split(',')[1]); // STRIP ID -> B
-                
+
                 string timeStamp = Path.GetFileNameWithoutExtension(csvFilePath).Split('_')[1];
                 dataRow.GetCell(2).SetCellValue(timeStamp);                 // Time -> C
-                
+
                 dataRow.GetCell(3).SetCellValue(csvLines[4].Split(',')[1]); // Left/Right -> D
 
                 IRow distanceXRow = sheet.GetRow(targetStartRow + 4);       // Distance X 기록
                 IRow distanceYRow = sheet.GetRow(targetStartRow + 5);       // Distance Y 기록
-                
+
                 for (int i = 7; i < csvLines.Length; i++)
                 {
-                    string[] strValue = csvLines[i].Split(',');
-                    //distanceXRow.GetCell(i - 6).SetCellValue(strValue[1]);  // Distance X
-                    //distanceYRow.GetCell(i - 6).SetCellValue(strValue[2]);  // Distance Y
+                    string[] strValue = csvLines[i].Split(',');                    
                     if ((strValue[0] == "A") || (strValue[0] == "B"))
                     {
                         //
@@ -195,10 +193,10 @@ namespace MoldOffsetRecord
                 UploadFileToFtp(excelFilePath, _ftpExcelFileFolder);
             }
             catch (Exception ex)
-            {                
+            {
                 MessageBox.Show($"CSV 데이터를 Excel에 기록 중 오류 발생 : {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }            
-        }
+            }
+        }        
 
         public void UploadFileToFtp(string localFilePath, string ftpFolder)
         {
