@@ -119,7 +119,7 @@ namespace MoldOffsetRecord
                 // User Ini file read
                 StringBuilder sbUserMode = new StringBuilder();
                 GetPrivateProfileString("UserInfo", "User", "", sbUserMode, sbUserMode.Capacity, string.Format("{0}{1}", Global.ConfigurePath, "User.ini"));
-                Define.strUserMode = sbUserMode.ToString().Trim();
+                Define.strUserMode = sbUserMode.ToString().Trim();                
             }
             catch (Exception ex)
             {
